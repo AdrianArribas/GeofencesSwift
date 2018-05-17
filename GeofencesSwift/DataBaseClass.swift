@@ -32,7 +32,7 @@ class dataBase {
         }
     }
     
-    func getLocalCoordinates(distControl: Double)->[Coordinate]{ //obtiene + 1000 coordenadas del back y devuelve 100
+    func getLocalCoordinates(distControl: Double)->[Coordinate]{
         print("reading values..")
         //first empty the list of coordinates
         coordinateList.removeAll()
@@ -57,17 +57,10 @@ class dataBase {
             let longitude = sqlite3_column_double(stmt, 3)
             let radius = sqlite3_column_int(stmt, 4)
             
-            //adding values to list (+1000)
             coordinateList.append(Coordinate(id: Int(id), name: String(describing: name), latitude: Double(latitude), longitude: Double(longitude), radius: Int(radius)))
-            /*for elementos in coordinateList {
-             //seleccionar los 100 mas cercanos, comparando long y lat con distControl
-             //guardar en base de datos esos 100
-             
-             // print(elementos.name!)
-             } */
+
             
         }
-        //devuelve los 100 más cercanos
         print ("contenido en coordinatelist\(coordinateList.count)")
         //print ("ultima entrada de coordinatelist \(coordinateList[coordinateList.count - 1].latitude, coordinateList[coordinateList.count - 1].longitude)")
         return coordinateList

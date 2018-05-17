@@ -47,6 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if CLLocationManager.locationServicesEnabled(){
             locationManager?.startUpdatingLocation()
         }
+        //DBFunctions.deleteAllCoordinates()
         reloadGeoFencesDB()
     }
     
@@ -109,16 +110,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //Boton para agregar geofences desde TextField de manera manual con XX.XXXXX,-XX.XXXXX sin espacios
     @IBAction func addGeoByText (_ sender: UIButton){
         let XY: String = coordTextField.text!
-        var XYArr = XY.split(separator: ",")
-        let X : Double = Double(XYArr[0])!
-        let Y : Double = Double(XYArr[1])!
-        let zonaPersonal = CLCircularRegion(center: CLLocationCoordinate2D(latitude: X, longitude: Y), radius: 30, identifier: "Zona Personal")
-        zonaPersonal.notifyOnExit = true
-        zonaPersonal.notifyOnEntry = true
-        //regionsCache.append(zonaPersonal)
-        DBFunctions.insertCoordinate(name: zonaPersonal.identifier, latitude: X, longitude: Y, radius: 150)
-        reloadGeoFencesDB()
-        self.geofencesLabel.text = "Zona añadida"
+        
+        if(XY != ""){
+            var XYArr = XY.split(separator: ",")
+            let X : Double = Double(XYArr[0])!
+            let Y : Double = Double(XYArr[1])!
+            let zonaPersonal = CLCircularRegion(center: CLLocationCoordinate2D(latitude: X, longitude: Y), radius: 30, identifier: "Zona Personal")
+            zonaPersonal.notifyOnExit = true
+            zonaPersonal.notifyOnEntry = true
+            //regionsCache.append(zonaPersonal)
+            DBFunctions.insertCoordinate(name: zonaPersonal.identifier, latitude: X, longitude: Y, radius: 150)
+            reloadGeoFencesDB()
+            self.geofencesLabel.text = "Zona añadida"
+        }
+        //lista coord aniadidas a mano si el textfield esta vacio
+        let coordinate = Coordinate(id: 0, name: "", latitude: 0, longitude: 0, radius: 0)
+        for elementos in coordinate.addValues() {
+            
+            DBFunctions.insertCoordinate(name: elementos.name!, latitude: elementos.latitude, longitude: elementos.longitude, radius: Int32(elementos.radius))
+            
+            print(elementos.name!)
+        }
         
     }
     
@@ -155,19 +167,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return closeLocations
     }
     
-    /*/ Notificación al entrar en una región
+    // Notificación al entrar en una región
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion ) {
-        //print("entrando en zona")
-        //notify(msg: "Hola")
-        //self.geofencesLabel.text = "has entrado en una región"
+        print("entrando en zona")
+       // notify(msg: "Hola")
+        self.geofencesLabel.text = "has entrado en una región"
     }
     
     // Notificación al salir de una región
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("saliendo de zona")
-        notify(msg: "Adios")
+       // notify(msg: "Adios")
         self.geofencesLabel.text = "has salido de una región"
-    }*/
+    }
     
     //Localizando al usuario
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
