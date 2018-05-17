@@ -205,6 +205,9 @@ SWIFT_CLASS("_TtC14GeofencesSwift11AppDelegate")
 @class UILabel;
 @class MKMapView;
 @class UITextField;
+@class UIStackView;
+@class UIView;
+@class NSLayoutConstraint;
 @class UIButton;
 @class CLLocationManager;
 @class CLLocation;
@@ -219,9 +222,14 @@ SWIFT_CLASS("_TtC14GeofencesSwift14ViewController")
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified coordTextField;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imagen;
+@property (nonatomic, weak) IBOutlet UIStackView * _Null_unspecified stackMenu;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified menuView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified mapTrailing;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified mapLeading;
+- (IBAction)hamburgerBtn:(id _Nonnull)sender;
 - (IBAction)toggleGeofences:(UIButton * _Nonnull)sender;
 - (IBAction)addGeoByDB:(UIButton * _Nonnull)sender;
 - (IBAction)deleteDBAndRefresh:(UIButton * _Nonnull)sender;

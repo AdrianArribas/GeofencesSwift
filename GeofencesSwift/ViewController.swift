@@ -30,11 +30,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var coordTextField: UITextField!
     @IBOutlet weak var imagen: UIImageView!
+    @IBOutlet weak var stackMenu: UIStackView!
     
     var locationManager : CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // creamos BD
         DBFunctions.createDB()
         // Inicializa Location Manager y establece los primeros parametros
@@ -60,6 +62,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    var hamBtnSwitch = false
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var mapTrailing: NSLayoutConstraint!
+    @IBOutlet weak var mapLeading: NSLayoutConstraint!
+    @IBAction func hamburgerBtn(_ sender: Any) {
+        if !hamBtnSwitch {
+            mapLeading.constant = 180
+            mapTrailing.constant = 0
+            print("moviendo a")
+            hamBtnSwitch = true
+        }else{
+            mapLeading.constant = 0
+            mapTrailing.constant = 0
+            print("moviendo b")
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }) {(animationComplete) in print("animacion")}
+            hamBtnSwitch = false
+        }
+    }
+    
+    
     
     //Boton para activar/desactivar geofences
     @IBAction func toggleGeofences(_ sender: UIButton) {
