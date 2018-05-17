@@ -136,5 +136,23 @@ class dataBase {
         sqlite3_finalize(deleteStatement)
     }
     
+    func addValues() -> [Coordinate]{
+        
+        let coordinate = Coordinate(id: 1, name: "Altran", latitude: 40.448778, longitude: -3.580982, radius: 50)
+        coordinateList.append(coordinate)
+        
+        let coordinate1 = Coordinate(id: 2, name: "Plenilunio", latitude: 40.447236, longitude: -3.586845, radius: 100)
+        coordinateList.append(coordinate1)
+        
+        let coordinate2 = Coordinate(id: 3, name: "Leroy Merlin", latitude: 40.446206, longitude: -3.579690, radius: 80)
+        coordinateList.append(coordinate2)
+        
+        let coordinate3 = Coordinate(id: 4, name: "Hotel Axor", latitude: 40.447736, longitude: -3.583130, radius: 30)
+        coordinateList.append(coordinate3)
+        let coordinate4 = Coordinate(id: 5, name: "Menta y cilantro", latitude: 40.445461, longitude: -3.577033, radius: 30)
+        coordinateList.append(coordinate4)
+        return coordinateList
+    }
+    
 }
 
