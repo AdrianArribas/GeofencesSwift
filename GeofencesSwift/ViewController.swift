@@ -56,6 +56,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         mapView.showsUserLocation = true
         //regionsCache = auxFunctions.initGeoFencesExamples()
+        imagen.loadGif(name: "sonicw")
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,7 +100,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 }
                 mapView.removeOverlays(mapView.overlays)
                 imagen.stopAnimating()
-                imagen.image = nil
+                imagen.loadGif(name: "sonicw")
                 buttonEnabled = false
                 print("No estamos mirando...")
             } else {
@@ -109,7 +110,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     locationManager.startMonitoring(for: CLCircularRegion)
                     mapView.add(MKCircle(center: CLCircularRegion.center, radius: CLCircularRegion.radius))
                 }
-                imagen.loadGif(name:"sonic2")
+                imagen.loadGif(name:"sonic")
                 
                 imagen.startAnimating()
                 buttonEnabled = true
