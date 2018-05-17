@@ -9,8 +9,10 @@ provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
 - !private "=="
+- !private "BooleanLiteralType"
 - "Coordinate"
 - "Double"
+- !private "FileManager"
 - "FloatLiteralType"
 - !private "Int"
 - "Int32"
@@ -31,7 +33,9 @@ depends-top-level:
 - !private "sqlite3_column_int"
 - !private "sqlite3_column_text"
 - !private "sqlite3_errmsg"
+- !private "sqlite3_exec"
 - !private "sqlite3_finalize"
+- !private "sqlite3_open"
 - !private "sqlite3_prepare"
 - !private "sqlite3_step"
 depends-member:
@@ -48,8 +52,10 @@ depends-member:
 - !private ["s7CVarArgP", "_getBuiltinLogicValue"]
 - !private ["s7CVarArgP", "append"]
 - !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "default"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "removeAll"]
+- !private ["s7CVarArgP", "url"]
 - !private ["s10CollectionP", "append"]
 - !private ["s10CollectionP", "count"]
 - !private ["s10CollectionP", "init"]
@@ -57,11 +63,17 @@ depends-member:
 - !private ["s10ComparableP", "init"]
 - !private ["14GeofencesSwift10CoordinateC", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "appendingPathComponent"]
 - !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "default"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "path"]
 - !private ["s28CustomDebugStringConvertibleP", "removeAll"]
+- !private ["s28CustomDebugStringConvertibleP", "url"]
 - !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "appendingPathComponent"]
 - !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "path"]
 - !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
 - !private ["s17CustomReflectableP", "append"]
 - !private ["s17CustomReflectableP", "count"]
@@ -69,38 +81,60 @@ depends-member:
 - !private ["s17CustomReflectableP", "removeAll"]
 - !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendingPathComponent"]
 - !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "default"]
 - !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "path"]
 - !private ["s23CustomStringConvertibleP", "removeAll"]
+- !private ["s23CustomStringConvertibleP", "url"]
 - !private ["s9DecodableP", "_getBuiltinLogicValue"]
 - !private ["s9DecodableP", "append"]
+- !private ["s9DecodableP", "appendingPathComponent"]
 - !private ["s9DecodableP", "count"]
 - !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "path"]
 - !private ["s9DecodableP", "removeAll"]
 - !private ["Sd", "init"]
 - !private ["s9EncodableP", "_getBuiltinLogicValue"]
 - !private ["s9EncodableP", "append"]
+- !private ["s9EncodableP", "appendingPathComponent"]
 - !private ["s9EncodableP", "count"]
 - !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "path"]
 - !private ["s9EncodableP", "removeAll"]
 - !private ["s9EquatableP", "_getBuiltinLogicValue"]
 - !private ["s9EquatableP", "append"]
+- !private ["s9EquatableP", "appendingPathComponent"]
 - !private ["s9EquatableP", "count"]
+- !private ["s9EquatableP", "default"]
+- !private ["s9EquatableP", "documentDirectory"]
 - !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "path"]
 - !private ["s9EquatableP", "removeAll"]
+- !private ["s9EquatableP", "url"]
+- !private ["s9EquatableP", "userDomainMask"]
 - !private ["s25ExpressibleByArrayLiteralP", "append"]
 - !private ["s25ExpressibleByArrayLiteralP", "count"]
 - !private ["s25ExpressibleByArrayLiteralP", "removeAll"]
+- !private ["s25ExpressibleByArrayLiteralP", "userDomainMask"]
 - !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s25ExpressibleByFloatLiteralP", "init"]
 - !private ["s27ExpressibleByIntegerLiteralP", "init"]
 - !private ["s26ExpressibleByStringLiteralP", "init"]
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["So11FileManagerC", "default"]
+- !private ["So11FileManagerC", "url"]
 - !private ["s17FixedWidthIntegerP", "init"]
 - !private ["s13FloatingPointP", "init"]
 - !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "appendingPathComponent"]
+- !private ["s8HashableP", "default"]
+- !private ["s8HashableP", "documentDirectory"]
 - !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "path"]
+- !private ["s8HashableP", "url"]
 - !private ["Si", "init"]
 - !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s25LosslessStringConvertibleP", "init"]
@@ -108,7 +142,12 @@ depends-member:
 - !private ["s17MutableCollectionP", "append"]
 - !private ["s17MutableCollectionP", "count"]
 - !private ["s17MutableCollectionP", "removeAll"]
+- !private ["So8NSObjectC", "default"]
+- !private ["So8NSObjectC", "url"]
+- !private ["So16NSObjectProtocolP", "default"]
+- !private ["So16NSObjectProtocolP", "url"]
 - !private ["s7NumericP", "init"]
+- !private ["s9OptionSetP", "userDomainMask"]
 - !private ["s22RandomAccessCollectionP", "append"]
 - !private ["s22RandomAccessCollectionP", "count"]
 - !private ["s22RandomAccessCollectionP", "removeAll"]
@@ -116,10 +155,17 @@ depends-member:
 - !private ["s26RangeReplaceableCollectionP", "count"]
 - !private ["s26RangeReplaceableCollectionP", "init"]
 - !private ["s26RangeReplaceableCollectionP", "removeAll"]
+- !private ["s16RawRepresentableP", "documentDirectory"]
+- !private ["s16RawRepresentableP", "userDomainMask"]
+- !private ["10Foundation20ReferenceConvertibleP", "appendingPathComponent"]
+- !private ["10Foundation20ReferenceConvertibleP", "path"]
+- !private ["So11FileManagerC19SearchPathDirectoryO", "documentDirectory"]
+- !private ["So11FileManagerC20SearchPathDomainMaskV", "userDomainMask"]
 - !private ["s8SequenceP", "append"]
 - !private ["s8SequenceP", "count"]
 - !private ["s8SequenceP", "init"]
 - !private ["s8SequenceP", "removeAll"]
+- !private ["s10SetAlgebraP", "userDomainMask"]
 - !private ["s13SignedIntegerP", "init"]
 - !private ["s13SignedNumericP", "init"]
 - !private ["s10StrideableP", "init"]
@@ -127,6 +173,8 @@ depends-member:
 - !private ["s14StringProtocolP", "init"]
 - !private ["s16TextOutputStreamP", "init"]
 - !private ["s20TextOutputStreamableP", "init"]
+- !private ["10Foundation3URLV", "appendingPathComponent"]
+- !private ["10Foundation3URLV", "path"]
 - !private ["s14_ArrayProtocolP", "append"]
 - !private ["s14_ArrayProtocolP", "count"]
 - !private ["s14_ArrayProtocolP", "removeAll"]
@@ -143,16 +191,23 @@ depends-member:
 - !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
 - !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "appendingPathComponent"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "path"]
 - !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "url"]
 - !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
 - !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "appendingPathComponent"]
 - !private ["s21_ObjectiveCBridgeableP", "count"]
 - !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "path"]
 - !private ["s21_ObjectiveCBridgeableP", "removeAll"]
 - !private ["s16_SwiftStringViewP", "init"]
 - ["14GeofencesSwift8dataBaseC", "ControlSwichDistance"]
 - ["14GeofencesSwift8dataBaseC", "Coordinate"]
 - ["14GeofencesSwift8dataBaseC", "Double"]
+- !private ["14GeofencesSwift8dataBaseC", "FileManager"]
 - !private ["14GeofencesSwift8dataBaseC", "Int"]
 - ["14GeofencesSwift8dataBaseC", "Int32"]
 - !private ["14GeofencesSwift8dataBaseC", "OpaquePointer"]
@@ -161,6 +216,7 @@ depends-member:
 - !private ["14GeofencesSwift8dataBaseC", "SQLITE_ROW"]
 - ["14GeofencesSwift8dataBaseC", "String"]
 - !private ["14GeofencesSwift8dataBaseC", "coordinateList"]
+- ["14GeofencesSwift8dataBaseC", "createDB"]
 - !private ["14GeofencesSwift8dataBaseC", "db"]
 - ["14GeofencesSwift8dataBaseC", "deinit"]
 - ["14GeofencesSwift8dataBaseC", "deleteAllCoordinates"]
@@ -175,7 +231,9 @@ depends-member:
 - !private ["14GeofencesSwift8dataBaseC", "sqlite3_column_int"]
 - !private ["14GeofencesSwift8dataBaseC", "sqlite3_column_text"]
 - !private ["14GeofencesSwift8dataBaseC", "sqlite3_errmsg"]
+- !private ["14GeofencesSwift8dataBaseC", "sqlite3_exec"]
 - !private ["14GeofencesSwift8dataBaseC", "sqlite3_finalize"]
+- !private ["14GeofencesSwift8dataBaseC", "sqlite3_open"]
 - !private ["14GeofencesSwift8dataBaseC", "sqlite3_prepare"]
 - !private ["14GeofencesSwift8dataBaseC", "sqlite3_step"]
 depends-nominal:
@@ -203,6 +261,7 @@ depends-nominal:
 - !private "s27ExpressibleByIntegerLiteralP"
 - !private "s26ExpressibleByStringLiteralP"
 - !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "So11FileManagerC"
 - !private "s17FixedWidthIntegerP"
 - !private "s13FloatingPointP"
 - !private "s8HashableP"
@@ -210,10 +269,18 @@ depends-nominal:
 - !private "s25LosslessStringConvertibleP"
 - !private "s10MirrorPathP"
 - !private "s17MutableCollectionP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
 - !private "s7NumericP"
+- !private "s9OptionSetP"
 - !private "s22RandomAccessCollectionP"
 - !private "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "So11FileManagerC19SearchPathDirectoryO"
+- !private "So11FileManagerC20SearchPathDomainMaskV"
 - !private "s8SequenceP"
+- !private "s10SetAlgebraP"
 - !private "s13SignedIntegerP"
 - !private "s13SignedNumericP"
 - !private "s10StrideableP"
@@ -221,6 +288,7 @@ depends-nominal:
 - !private "s14StringProtocolP"
 - !private "s16TextOutputStreamP"
 - !private "s20TextOutputStreamableP"
+- !private "10Foundation3URLV"
 - !private "s14_ArrayProtocolP"
 - !private "s18_BitwiseOperationsP"
 - !private "s15_CVarArgAlignedP"
@@ -233,7 +301,9 @@ depends-nominal:
 - !private "s34_ExpressibleByBuiltinStringLiteralP"
 - !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
 - !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s34_ExpressibleByFileReferenceLiteralP"
 - !private "s33_ExpressibleByStringInterpolationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
 - !private "s21_ObjectiveCBridgeableP"
 - !private "s16_SwiftStringViewP"
 - "14GeofencesSwift8dataBaseC"
@@ -267,4 +337,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "e0b80c3c7d46d28dd7eb1cc2892ba347"
+interface-hash: "ee367dbca288459d93b250f86d02ef27"
