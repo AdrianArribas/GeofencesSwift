@@ -106,19 +106,48 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    
+    @IBAction func addGeoByDB(_ sender: UIButton) {
+        for CLCircularRegion in closeLocations {
+            locationManager?.stopMonitoring(for: CLCircularRegion)
+        }
+        mapView.removeOverlays(mapView.overlays)
+        reloadGeoFencesDB()
+        closeLocations = fillArrayGeofences()
+        for CLCircularRegion in closeLocations {
+            locationManager?.startMonitoring(for: CLCircularRegion)
+            mapView.add(MKCircle(center: CLCircularRegion.center, radius: CLCircularRegion.radius))
+        }
+        geofencesLabel.text = "Base de datos recargada"
+    }
+    
+    @IBAction func deleteDBAndRefresh(_ sender: UIButton) {
+        for CLCircularRegion in closeLocations {
+            locationManager?.stopMonitoring(for: CLCircularRegion)
+        }
+        mapView.removeOverlays(mapView.overlays)
+        DBFunctions.deleteAllCoordinates()
+        geofencesLabel.text = "Base de datos borrada"
+    }
+    
+    
     //Boton para agregar geofences desde TextField de manera manual con XX.XXXXX,-XX.XXXXX sin espacios
     @IBAction func addGeoByText (_ sender: UIButton){
-        let XY: String = coordTextField.text!
-        var XYArr = XY.split(separator: ",")
-        let X : Double = Double(XYArr[0])!
-        let Y : Double = Double(XYArr[1])!
-        let zonaPersonal = CLCircularRegion(center: CLLocationCoordinate2D(latitude: X, longitude: Y), radius: 30, identifier: "Zona Personal")
-        zonaPersonal.notifyOnExit = true
-        zonaPersonal.notifyOnEntry = true
-        //regionsCache.append(zonaPersonal)
-        DBFunctions.insertCoordinate(name: zonaPersonal.identifier, latitude: X, longitude: Y, radius: 150)
-        reloadGeoFencesDB()
-        self.geofencesLabel.text = "Zona añadida"
+        if coordTextField.text == ""{
+            print("TF vacio")
+        }else{
+            let XY: String = coordTextField.text!
+            var XYArr = XY.split(separator: ",")
+            let X : Double = Double(XYArr[0])!
+            let Y : Double = Double(XYArr[1])!
+            let zonaPersonal = CLCircularRegion(center: CLLocationCoordinate2D(latitude: X, longitude: Y), radius: 30, identifier: "Zona Personal")
+            zonaPersonal.notifyOnExit = true
+            zonaPersonal.notifyOnEntry = true
+            //regionsCache.append(zonaPersonal)
+            DBFunctions.insertCoordinate(name: zonaPersonal.identifier, latitude: X, longitude: Y, radius: 150)
+            reloadGeoFencesDB()
+            self.geofencesLabel.text = "Zona añadida"
+        }
         
     }
     

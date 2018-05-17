@@ -13,7 +13,6 @@ depends-top-level:
 - "Coordinate"
 - "Double"
 - !private "FileManager"
-- "FloatLiteralType"
 - !private "Int"
 - "Int32"
 - !private "OpaquePointer"
@@ -204,7 +203,6 @@ depends-member:
 - !private ["s21_ObjectiveCBridgeableP", "path"]
 - !private ["s21_ObjectiveCBridgeableP", "removeAll"]
 - !private ["s16_SwiftStringViewP", "init"]
-- ["14GeofencesSwift8dataBaseC", "ControlSwichDistance"]
 - ["14GeofencesSwift8dataBaseC", "Coordinate"]
 - ["14GeofencesSwift8dataBaseC", "Double"]
 - !private ["14GeofencesSwift8dataBaseC", "FileManager"]
@@ -337,4 +335,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "ee367dbca288459d93b250f86d02ef27"
+interface-hash: "a912ce8eecd5469fd84d133b9b2616eb"

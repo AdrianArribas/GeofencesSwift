@@ -19,8 +19,10 @@ provides-nominal:
 provides-member:
 - ["14GeofencesSwift14ViewControllerC", ""]
 provides-dynamic-lookup:
+- "addGeoByDB"
 - "addGeoByText"
 - "coordTextField"
+- "deleteDBAndRefresh"
 - "didReceiveMemoryWarning"
 - "geofencesLabel"
 - "imagen"
@@ -825,6 +827,7 @@ depends-member:
 - ["So8NSObjectC", "UILabel"]
 - ["So8NSObjectC", "UITextField"]
 - !private ["So8NSObjectC", "add"]
+- ["So8NSObjectC", "addGeoByDB"]
 - ["So8NSObjectC", "addGeoByText"]
 - !private ["So8NSObjectC", "auxFunctions"]
 - !private ["So8NSObjectC", "buttonEnabled"]
@@ -835,6 +838,7 @@ depends-member:
 - !private ["So8NSObjectC", "coordinateList"]
 - !private ["So8NSObjectC", "currentLocation"]
 - !private ["So8NSObjectC", "delegate"]
+- ["So8NSObjectC", "deleteDBAndRefresh"]
 - !private ["So8NSObjectC", "desiredAccuracy"]
 - ["So8NSObjectC", "didReceiveMemoryWarning"]
 - !private ["So8NSObjectC", "distance"]
@@ -1298,6 +1302,7 @@ depends-member:
 - ["So11UIResponderC", "UILabel"]
 - ["So11UIResponderC", "UITextField"]
 - !private ["So11UIResponderC", "add"]
+- ["So11UIResponderC", "addGeoByDB"]
 - ["So11UIResponderC", "addGeoByText"]
 - !private ["So11UIResponderC", "auxFunctions"]
 - !private ["So11UIResponderC", "buttonEnabled"]
@@ -1306,6 +1311,7 @@ depends-member:
 - !private ["So11UIResponderC", "coordinateList"]
 - !private ["So11UIResponderC", "currentLocation"]
 - !private ["So11UIResponderC", "delegate"]
+- ["So11UIResponderC", "deleteDBAndRefresh"]
 - ["So11UIResponderC", "didReceiveMemoryWarning"]
 - ["So11UIResponderC", "fillArrayGeofences"]
 - !private ["So11UIResponderC", "firstTimeFill"]
@@ -1534,6 +1540,7 @@ depends-member:
 - ["So16UIViewControllerC", "UILabel"]
 - ["So16UIViewControllerC", "UITextField"]
 - ["So16UIViewControllerC", ""]
+- ["So16UIViewControllerC", "addGeoByDB"]
 - ["So16UIViewControllerC", "addGeoByText"]
 - !private ["So16UIViewControllerC", "auxFunctions"]
 - !private ["So16UIViewControllerC", "buttonEnabled"]
@@ -1541,6 +1548,7 @@ depends-member:
 - ["So16UIViewControllerC", "coordTextField"]
 - !private ["So16UIViewControllerC", "coordinateList"]
 - !private ["So16UIViewControllerC", "currentLocation"]
+- ["So16UIViewControllerC", "deleteDBAndRefresh"]
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
 - ["So16UIViewControllerC", "fillArrayGeofences"]
 - !private ["So16UIViewControllerC", "firstTimeFill"]
@@ -1589,6 +1597,7 @@ depends-member:
 - ["14GeofencesSwift14ViewControllerC", "UIImageView"]
 - ["14GeofencesSwift14ViewControllerC", "UILabel"]
 - ["14GeofencesSwift14ViewControllerC", "UITextField"]
+- ["14GeofencesSwift14ViewControllerC", "addGeoByDB"]
 - ["14GeofencesSwift14ViewControllerC", "addGeoByText"]
 - !private ["14GeofencesSwift14ViewControllerC", "auxFunctions"]
 - !private ["14GeofencesSwift14ViewControllerC", "buttonEnabled"]
@@ -1597,6 +1606,7 @@ depends-member:
 - !private ["14GeofencesSwift14ViewControllerC", "coordinateList"]
 - !private ["14GeofencesSwift14ViewControllerC", "currentLocation"]
 - ["14GeofencesSwift14ViewControllerC", "deinit"]
+- ["14GeofencesSwift14ViewControllerC", "deleteDBAndRefresh"]
 - ["14GeofencesSwift14ViewControllerC", "didReceiveMemoryWarning"]
 - ["14GeofencesSwift14ViewControllerC", "fillArrayGeofences"]
 - !private ["14GeofencesSwift14ViewControllerC", "firstTimeFill"]
@@ -1747,6 +1757,7 @@ depends-member:
 - !private ["s16_SwiftStringViewP", "init"]
 - !private ["s16_SwiftStringViewP", "split"]
 - !private ["14GeofencesSwift8dataBaseC", "createDB"]
+- !private ["14GeofencesSwift8dataBaseC", "deleteAllCoordinates"]
 - !private ["14GeofencesSwift8dataBaseC", "getLocalCoordinates"]
 - ["14GeofencesSwift8dataBaseC", "init"]
 - !private ["14GeofencesSwift8dataBaseC", "insertCoordinate"]
@@ -1899,4 +1910,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.3.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "a983271332535bdb143423d488fc5dc8"
+interface-hash: "3c592c53fe76d83d9a7510b4444bbee3"
