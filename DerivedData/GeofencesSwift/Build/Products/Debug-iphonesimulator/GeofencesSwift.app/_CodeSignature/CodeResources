@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Assets.car</key>
+		<data>
+		yUsV+tpQixD9/cem2ooeDCKdDTY=
+		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
 		Pp1MEwccUdvf/sFB+usywR2pSfY=
@@ -18,15 +22,15 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<data>
-		8ZyBu8UrJdWVKDr2TcPCI8nDx+c=
+		2PdeLcRGfkCYLXe2Gz+sDhhgfHs=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		MDrKFvFWroTb0+KEbQShBcoBvo4=
+		rNCDIKqxE38eG/SdfhZMPNaTBH8=
 		</data>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
+		<key>Base.lproj/Main.storyboardc/UINavigationController-RLn-aI-ddb.nib</key>
 		<data>
-		xkI0dzgj+gHCqtZStQTv2ByNnnM=
+		dqmP1m4d9e9W3ovIPWdhu2bF5fI=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
@@ -111,6 +115,17 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yUsV+tpQixD9/cem2ooeDCKdDTY=
+			</data>
+			<key>hash2</key>
+			<data>
+			p7SF05xLb4iq84i9H7wdADXODzQNA4A80R0Y41MVMGY=
+			</data>
+		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
@@ -148,33 +163,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8ZyBu8UrJdWVKDr2TcPCI8nDx+c=
+			2PdeLcRGfkCYLXe2Gz+sDhhgfHs=
 			</data>
 			<key>hash2</key>
 			<data>
-			p0yCNRyw6S1h5cCLG0NvKpwI1V6J2y0Pn49SuitT1rU=
+			6LqeltUQejCcoG9iKwPPM/OGV8Wt4wUf1P35G3Zjoow=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MDrKFvFWroTb0+KEbQShBcoBvo4=
+			rNCDIKqxE38eG/SdfhZMPNaTBH8=
 			</data>
 			<key>hash2</key>
 			<data>
-			PpvapAjR62rl6Ym4E6hkTgpKmBICxTaQXeUqcpHmmqQ=
+			TVnVLVqcYQjnmvivbNSKJ4QNfbHLnd8lWasvGn+fXPk=
 			</data>
 		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
+		<key>Base.lproj/Main.storyboardc/UINavigationController-RLn-aI-ddb.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xkI0dzgj+gHCqtZStQTv2ByNnnM=
+			dqmP1m4d9e9W3ovIPWdhu2bF5fI=
 			</data>
 			<key>hash2</key>
 			<data>
-			TGpUv5JoFUWWjNjwc0wVbdjqOj8HSnNkq3OGXDQuQa0=
+			LufOtQRjTlvO7GfHE8K9kdVqq0ioE/3OBkocYaso20Q=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
