@@ -223,6 +223,8 @@ SWIFT_CLASS("_TtC14GeofencesSwift14ViewController")
 - (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
 - (IBAction)toggleGeofences:(UIButton * _Nonnull)sender;
+- (IBAction)addGeoByDB:(UIButton * _Nonnull)sender;
+- (IBAction)deleteDBAndRefresh:(UIButton * _Nonnull)sender;
 - (IBAction)addGeoByText:(UIButton * _Nonnull)sender;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
 - (MKOverlayRenderer * _Nonnull)mapView:(MKMapView * _Nonnull)mapView rendererForOverlay:(id <MKOverlay> _Nonnull)overlay SWIFT_WARN_UNUSED_RESULT;

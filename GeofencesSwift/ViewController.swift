@@ -107,6 +107,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    
+    @IBAction func addGeoByDB(_ sender: UIButton) {
+        for CLCircularRegion in closeLocations {
+            locationManager?.stopMonitoring(for: CLCircularRegion)
+        }
+        mapView.removeOverlays(mapView.overlays)
+        reloadGeoFencesDB()
+        closeLocations = fillArrayGeofences()
+        for CLCircularRegion in closeLocations {
+            locationManager?.startMonitoring(for: CLCircularRegion)
+            mapView.add(MKCircle(center: CLCircularRegion.center, radius: CLCircularRegion.radius))
+        }
+        geofencesLabel.text = "Base de datos recargada"
+    }
+    
+    @IBAction func deleteDBAndRefresh(_ sender: UIButton) {
+        for CLCircularRegion in closeLocations {
+            locationManager?.stopMonitoring(for: CLCircularRegion)
+        }
+        mapView.removeOverlays(mapView.overlays)
+        DBFunctions.deleteAllCoordinates()
+        geofencesLabel.text = "Base de datos borrada"
+    }
+    
+    
     //Boton para agregar geofences desde TextField de manera manual con XX.XXXXX,-XX.XXXXX sin espacios
     @IBAction func addGeoByText (_ sender: UIButton){
         let XY: String = coordTextField.text!

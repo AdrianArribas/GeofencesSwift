@@ -13,7 +13,6 @@ import MapKit
 import SQLite3
 
 class dataBase {
-    let ControlSwichDistance = 270.0
     
     func createDB(){
         //Creacion de la BDD
