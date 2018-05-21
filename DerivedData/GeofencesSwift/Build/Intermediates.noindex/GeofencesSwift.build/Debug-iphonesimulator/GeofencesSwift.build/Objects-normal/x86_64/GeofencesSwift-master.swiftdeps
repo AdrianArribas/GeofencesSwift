@@ -1,10 +1,10 @@
 version: "Apple Swift version 4.1 (swiftlang-902.0.48 clang-902.0.37.1)"
 options: "cbd69cabb7105c04c08c0def5eaa6e54"
-build_time: [1526556692, 979811000]
+build_time: [1526910642, 731021000]
 inputs:
   "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/GifSwift.swift": [1526463706, 0]
-  "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/ViewController.swift": [1526556692, 0]
-  "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/geofencesClass.swift": [1526468631, 0]
+  "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/ViewController.swift": [1526910629, 0]
+  "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/geofencesClass.swift": !private [1526468631, 0]
   "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/AppDelegate.swift": [1526039263, 0]
   "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/Coordinate.swift": [1526305181, 0]
-  "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/DataBaseClass.swift": [1526542170, 0]
+  "/Users/usuario/Desktop/Adrian/GeofencesSwift/GeofencesSwift/DataBaseClass.swift": !private [1526542170, 0]
