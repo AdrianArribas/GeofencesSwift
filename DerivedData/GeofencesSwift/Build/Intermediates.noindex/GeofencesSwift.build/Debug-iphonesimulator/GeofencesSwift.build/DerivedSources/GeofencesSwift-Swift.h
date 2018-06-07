@@ -164,6 +164,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import UIKit;
+@import ObjectiveC;
 @import CoreLocation;
 @import MapKit;
 #endif
@@ -199,6 +200,12 @@ SWIFT_CLASS("_TtC14GeofencesSwift11AppDelegate")
 @end
 
 
+SWIFT_CLASS("_TtC14GeofencesSwift6Metods")
+@interface Metods : NSObject <CLLocationManagerDelegate>
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 
 
@@ -209,32 +216,29 @@ SWIFT_CLASS("_TtC14GeofencesSwift11AppDelegate")
 @class UIView;
 @class NSLayoutConstraint;
 @class UIButton;
-@class CLLocationManager;
-@class CLLocation;
 @protocol MKOverlay;
 @class MKOverlayRenderer;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC14GeofencesSwift14ViewController")
-@interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface ViewController : UIViewController <MKMapViewDelegate>
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified geofencesLabel;
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified coordTextField;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imagen;
 @property (nonatomic, weak) IBOutlet UIStackView * _Null_unspecified stackMenu;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)didReceiveMemoryWarning;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified menuView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified mapTrailing;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified mapLeading;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)didReceiveMemoryWarning;
 - (IBAction)hamburgerBtn:(id _Nonnull)sender;
 - (IBAction)toggleGeofences:(UIButton * _Nonnull)sender;
 - (IBAction)addGeoByDB:(UIButton * _Nonnull)sender;
 - (IBAction)deleteDBAndRefresh:(UIButton * _Nonnull)sender;
 - (IBAction)addGeoByText:(UIButton * _Nonnull)sender;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
 - (MKOverlayRenderer * _Nonnull)mapView:(MKMapView * _Nonnull)mapView rendererForOverlay:(id <MKOverlay> _Nonnull)overlay SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;

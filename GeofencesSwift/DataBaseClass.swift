@@ -12,7 +12,9 @@ import CoreLocation
 import MapKit
 import SQLite3
 
+
 class dataBase {
+    var db: OpaquePointer?
     
     func createDB(){
         //Creacion de la BDD
@@ -34,8 +36,7 @@ class dataBase {
     func getLocalCoordinates(distControl: Double)->[Coordinate]{ //obtiene + 1000 coordenadas del back y devuelve 100
         print("reading values..")
         //first empty the list of coordinates
-        coordinateList.removeAll()
-        
+        var coordinateList = [Coordinate] ()
         //this is our select query
         let queryString = "SELECT * FROM Coordinates"
         
