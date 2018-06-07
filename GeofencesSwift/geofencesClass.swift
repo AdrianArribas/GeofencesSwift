@@ -12,8 +12,161 @@ import CoreLocation
 import MapKit
 import SQLite3
 
-class Metods {
-     let ControlSwichDistance = 270.0
+@objc public class Metods: NSObject, CLLocationManagerDelegate {
+    var locationManager : CLLocationManager!
+    var firstTimeFill = true
+    var currentLocation : CLLocationCoordinate2D?
+    var regionsCache = [CLCircularRegion]()
+    var closeLocations: [CLCircularRegion] = []
+    var nearest : CLLocation?
+    var refreshGeofences = 0
+    let ControlSwichDistance = 270.0
+    var onSpot = false
+    var DBFunctions = dataBase()
+    var coordinateList = [Coordinate]()
+   
+    
+    internal func initLocManager(){
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            locationManager = appDelegate.locationManager
+            locationManager?.delegate = self
+            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.pausesLocationUpdatesAutomatically = false
+        }
+        //comprueba los permisos y si OK empieza a rastrear posicion
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager?.startUpdatingLocation()
+        }
+    }
+    
+    //Localizando al usuario
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], mapView : MKMapView, geofencesLabel : UILabel) {
+        currentLocation = manager.location?.coordinate
+        print("posicion del usuario= \(currentLocation!.latitude, currentLocation!.longitude)")
+        refreshGeofences += 1
+        if refreshGeofences == 25 {
+            for CLCircularRegion in closeLocations {
+                locationManager?.stopMonitoring(for: CLCircularRegion)
+            }
+            mapView.removeOverlays(mapView.overlays)
+            closeLocations = fillArrayGeofences()
+            for CLCircularRegion in closeLocations {
+                locationManager?.startMonitoring(for: CLCircularRegion)
+                mapView.add(MKCircle(center: CLCircularRegion.center, radius: CLCircularRegion.radius))
+            }
+            geofencesLabel.text = nearestRegion()
+            refreshGeofences = 0
+        }
+        if let userLocation = locations.last{
+            let ViewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1000, 1000)
+            mapView.setRegion(ViewRegion, animated: false)
+        }
+    }
+    
+    //actualiza GeoFences cada 25 refrescos de posicion
+    func fillArrayGeofences() -> [CLCircularRegion] {
+        if firstTimeFill == true {
+            for item in regionsCache{
+                let itemUbication = CLLocation(latitude: item.center.latitude, longitude: item.center.longitude)
+                let userUbication = CLLocation(latitude: currentLocation!.latitude, longitude: currentLocation!.longitude)
+                let distance = itemUbication.distance(from: userUbication)
+                print("distancia hasta la ubicacion = \(distance)")
+                print("distancia de control en insercion inicial = \(ControlSwichDistance)")
+                if (distance < ControlSwichDistance){
+                    closeLocations.append(item)
+                    print("añadida region inicial \(item.identifier)")
+                }
+            }
+            firstTimeFill = false
+        }
+        closeLocations.removeAll()
+        print("despejando closelocations")
+        for item in regionsCache{
+            let itemUbication = CLLocation(latitude: item.center.latitude, longitude: item.center.longitude)
+            let userUbication = CLLocation(latitude: currentLocation!.latitude, longitude: currentLocation!.longitude)
+            let distance = itemUbication.distance(from: userUbication)
+            print("distancia hasta la ubicacion en insercion = \(distance)")
+            print("distancia de control = \(ControlSwichDistance)")
+            if (distance < ControlSwichDistance){
+                closeLocations.append(item)
+                print("añadida region \(item.identifier)")
+            }
+        }
+        print("valor de distancia de control  = \(ControlSwichDistance)")
+        return closeLocations
+    }
+    
+    func switchGeoFences(buttonEnabled : Bool, geofencesLabel : UILabel, mapView : MKMapView, imagen : UIImageView) -> Bool{
+        if let locationManager = self.locationManager {
+            print("posiciones monitorizadas = \(locationManager.monitoredRegions.count)")
+            print("conenido de closelocations = \(closeLocations.count)")
+            print("conenido de regiones = \(regionsCache.count)")
+            print("boton de encendido \(buttonEnabled)")
+            if(buttonEnabled == true) {
+                geofencesLabel.text = "Geofences OFF"
+                for CLCircularRegion in closeLocations {
+                    locationManager.stopMonitoring(for: CLCircularRegion)
+                }
+                mapView.removeOverlays(mapView.overlays)
+                imagen.stopAnimating()
+                imagen.loadGif(name: "sonicw")
+                print("No estamos mirando...")
+                return false
+            } else {
+                geofencesLabel.text = "Geofences ON"
+                closeLocations = fillArrayGeofences()
+                for CLCircularRegion in closeLocations {
+                    locationManager.startMonitoring(for: CLCircularRegion)
+                    mapView.add(MKCircle(center: CLCircularRegion.center, radius: CLCircularRegion.radius))
+                }
+                imagen.loadGif(name:"sonic")
+                imagen.startAnimating()
+                print("Observando...")
+                return true
+            }
+        } else {
+            print("problema al crear las geofences")
+            return false
+        }
+    }
+    
+    //recargar array desde BDD
+    func reloadGeoFencesDB(){
+        coordinateList.removeAll()
+        coordinateList = DBFunctions.getLocalCoordinates(distControl: Double(ControlSwichDistance))
+        for item in coordinateList{
+            regionsCache.append(CLCircularRegion(center: CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude), radius: CLLocationDistance(item.radius), identifier: "Zona Personal"))
+            print("añadido a cache: \(regionsCache[0].center.latitude, regionsCache[0].center.longitude, regionsCache[0].radius)")
+        }
+    }
+    
+    func addGeoByText(coordTextField: String){
+        let XY: String = coordTextField
+        var XYArr = XY.split(separator: ",")
+        let X : Double = Double(XYArr[0])!
+        let Y : Double = Double(XYArr[1])!
+        let zonaPersonal = CLCircularRegion(center: CLLocationCoordinate2D(latitude: X, longitude: Y), radius: 30, identifier: "Zona Personal")
+        zonaPersonal.notifyOnExit = true
+        zonaPersonal.notifyOnEntry = true
+        //regionsCache.append(zonaPersonal)
+        DBFunctions.insertCoordinate(name: zonaPersonal.identifier, latitude: X, longitude: Y, radius: 150)
+        reloadGeoFencesDB()
+    }
+
+    func addGeoByDB(mapView : MKMapView, geofencesLabel : UILabel){
+        //añadir Geo por DB
+        for CLCircularRegion in closeLocations {
+            locationManager?.stopMonitoring(for: CLCircularRegion)
+        }
+        mapView.removeOverlays(mapView.overlays)
+        reloadGeoFencesDB()
+        closeLocations = fillArrayGeofences()
+        for CLCircularRegion in closeLocations {
+            locationManager?.startMonitoring(for: CLCircularRegion)
+            mapView.add(MKCircle(center: CLCircularRegion.center, radius: CLCircularRegion.radius))
+        }
+        geofencesLabel.text = "Base de datos recargada"
+    }
     
     func distanceFN(item:CLCircularRegion, currentLocation: CLLocationCoordinate2D) {
         let distance: CLLocationDistance
@@ -70,6 +223,15 @@ class Metods {
         }
         return retorno
     }
+    
+    func deleteDBAndRefresh(mapView : MKMapView){
+        for CLCircularRegion in closeLocations {
+            locationManager?.stopMonitoring(for: CLCircularRegion)
+        }
+        mapView.removeOverlays(mapView.overlays)
+        DBFunctions.deleteAllCoordinates()
+    }
+    
     
     /*/ funcion de notificacion NO FUNCIONA--------------------!!!!!
     func notify(msg : String) {
