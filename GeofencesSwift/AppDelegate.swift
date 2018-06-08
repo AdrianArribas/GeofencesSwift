@@ -14,6 +14,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var locationManager : CLLocationManager?
+    var notifyFunctions = NotificationClass()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -21,16 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager?.requestAlwaysAuthorization()
         locationManager?.requestWhenInUseAuthorization()
         
-        /*
-         let center = UNUserNotificationCenter.current()
-         center.delegate = self
-         center.requestAuthorization(options: [UNAuthorizationOptions.sound ], completionHandler: { (granted, error) in
-         if error == nil{
-         UIApplication.shared.registerForRemoteNotifications()
-         }
-         })
-         */
+        notifyFunctions.permissionNotification()
         return true
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

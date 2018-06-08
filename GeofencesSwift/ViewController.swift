@@ -11,13 +11,14 @@ import MapKit
 import UserNotifications
 import SQLite3
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate, MKMapViewDelegate {
     
     var hamBtnSwitch = false
     var buttonEnabled = true
     var auxFunctions = Metods()
     var DBFunctions = dataBase()
     var locationManager : CLLocationManager?
+    var notifyFunctions = NotificationClass()
     
     @IBOutlet weak var geofencesLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -30,6 +31,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UNUserNotificationCenter.current().delegate = self
+        notifyFunctions.createNotification()
         // creamos BD
         DBFunctions.createDB()
         // Inicializa Location Manager y establece los primeros parametros
@@ -98,6 +101,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         circleRenderer.fillColor = auxFunctions.regionColor()
         return circleRenderer
     }
-    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        withCompletionHandler([.alert, .sound])
+    }
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let respuesta = response.actionIdentifier
+        notifyFunctions.executeActions(respuesta: respuesta)
+    }
 }
 

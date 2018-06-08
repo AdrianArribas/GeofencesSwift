@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2D6D8620C97FB9007A875A /* NotificationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D6D8520C97FB9007A875A /* NotificationClass.swift */; };
 		841C4B9B20A1A0AD00C9F466 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C4B9A20A1A0AD00C9F466 /* AppDelegate.swift */; };
 		841C4B9D20A1A0AD00C9F466 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C4B9C20A1A0AD00C9F466 /* ViewController.swift */; };
 		841C4BA020A1A0AD00C9F466 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841C4B9E20A1A0AD00C9F466 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E2D6D8520C97FB9007A875A /* NotificationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationClass.swift; sourceTree = "<group>"; };
 		841C4B9720A1A0AD00C9F466 /* GeofencesSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeofencesSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841C4B9A20A1A0AD00C9F466 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841C4B9C20A1A0AD00C9F466 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				841C4B9C20A1A0AD00C9F466 /* ViewController.swift */,
 				841C4B9E20A1A0AD00C9F466 /* Main.storyboard */,
 				841C4BAF20A2FBB000C9F466 /* geofencesClass.swift */,
+				0E2D6D8520C97FB9007A875A /* NotificationClass.swift */,
 				8441E56F20AC345900D25FCB /* DataBaseClass.swift */,
 				846A220220A9C9140089A0DA /* Coordinate.swift */,
 				841C4BA120A1A0AE00C9F466 /* Assets.xcassets */,
@@ -176,6 +179,7 @@
 				84226BFD20AC1A2300A4F55C /* GifSwift.swift in Sources */,
 				841C4B9D20A1A0AD00C9F466 /* ViewController.swift in Sources */,
 				841C4BB020A2FBB000C9F466 /* geofencesClass.swift in Sources */,
+				0E2D6D8620C97FB9007A875A /* NotificationClass.swift in Sources */,
 				841C4B9B20A1A0AD00C9F466 /* AppDelegate.swift in Sources */,
 				846A220320A9C9140089A0DA /* Coordinate.swift in Sources */,
 				8441E57020AC345900D25FCB /* DataBaseClass.swift in Sources */,
